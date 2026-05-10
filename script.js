@@ -2,8 +2,8 @@ const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 const completedCounter = document.getElementById("completed-counter");
 const uncompletedCounter = document.getElementById("uncompleted-counter");
-const li = document.createElement("li");
 function addTask (){
+    const li = document.createElement("li");
     const task = inputBox.value.trim()
     if(!task){
         alert('Please add a task')
@@ -17,8 +17,11 @@ function addTask (){
 <span class="edit-btn">Edit</span>
 <span class="delete-btn">Delete</span>
 `;
+
 listContainer.appendChild(li)
+
 inputBox.value = "";
+
 const checkbox = li.querySelector("input");
 const editBtn = li.querySelector(".edit-btn");
 const taskSpan = li.querySelector("span");
@@ -36,6 +39,12 @@ editBtn.addEventListener("click", function () {
     li.classList.remove("completed");
     checkbox.checked = false
     updateCounters()
+  }
+});
+deleteBtn.addEventListener("click", function () {
+  if (confirm("Are you sure you want to delete this task?")) {
+    li.remove();
+    updateCounters();
   }
 });
 }
@@ -59,4 +68,6 @@ function updateCounters() {
      
     }
   });
+  
 }
+
