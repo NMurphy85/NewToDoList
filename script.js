@@ -71,3 +71,8 @@ function updateCounters() {
   
 }
 
+inputBox.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
